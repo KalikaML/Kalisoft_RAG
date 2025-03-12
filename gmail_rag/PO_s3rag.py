@@ -1,4 +1,4 @@
-#This code builds a Streamlit-based RAG system that fetches PO emails, extracts data, 
+    #This code builds a Streamlit-based RAG system that fetches PO emails, extracts data,
 # indexes it with FAISS, store files in AWS S3 and enables querying via Llama2.
 
 

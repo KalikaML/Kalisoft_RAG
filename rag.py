@@ -1,24 +1,25 @@
 import streamlit as st
 import boto3
 import faiss
-import io
+import io,os
 import pdfplumber
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_community.llms import Ollama
 from langchain.chains import RetrievalQA
+from langchain.llms import HuggingFaceHub
 
-
+os.environ["HUGGINGFACEHUB_API_TOKEN"]=st.secrets["huggingface_token"]
 
 # AWS S3 Configuration
 S3_BUCKET = "kalika-rag"
 S3_PO_FOLDER = "PO_Dump/"
 S3_PO_INDEX_PATH = "faiss_indexes/po_faiss_index"
 S3_PROFORMA_FOLDER = "proforma_invoice/"
-S3_PROFORMA_INDEX_PATH = "faiss_indexes/proforma_faiss_index"
+S3_PROFORMA_INDEX_PATH = "faiss_indexes/proforma_faiss_index.index"
 
-s3 = boto3.client('s3', aws_access_key_id=st.secrets['access_key_id'],
+s3_client = boto3.client('s3', aws_access_key_id=st.secrets['access_key_id'],
                   aws_secret_access_key=st.secrets['secret_access_key'])
 
 def list_s3_pdfs(folder):
@@ -49,9 +50,10 @@ def create_vector_store(documents, index_path):
         return None
     embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
     vector_store = FAISS.from_texts(documents, embeddings)
-    faiss_bytes = faiss.serialize_index(vector_store.index)
+    faiss_bytes = vector_store.serialize_to_bytes()  # Serializes index + docstore
     faiss_buffer = io.BytesIO(faiss_bytes)
-    s3_client.upload_fileobj(faiss_buffer, S3_BUCKET, index_path)
+    s3_client.upload_fileobj(faiss_buffer, S3_BUCKET, index_path) ## o
+    # s3_client.upload_fileobj(, S3_BUCKET, index_path) ##
     print("vector store in path", index_path)
     return vector_store
 
@@ -60,9 +62,12 @@ def get_vector_store(index_path, folder):
         faiss_buffer = io.BytesIO()
         s3_client.download_fileobj(S3_BUCKET, index_path, faiss_buffer)
         faiss_buffer.seek(0)
-        index = faiss.deserialize_index(faiss_buffer.read())
+        # Correctly deserialize the index
+        index_bytes = faiss_buffer.read()
+        index = faiss.deserialize_index(index_bytes)
         embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
         return FAISS(embedding_function=embeddings, index=index)
+
     except Exception as e:
         print(f"⚠️ Error loading FAISS index for {index_path}: {e}")
         print("Rebuilding FAISS index...")
@@ -77,7 +82,9 @@ def query_rag(query, index_path, folder):
     if not vector_store:
         return "Index not found. Please build the index first."
     retriever = vector_store.as_retriever()
-    llm = Ollama(model="llama2:latest")
+    llm = HuggingFaceHub(repo_id="HuggingFaceH4/zephyr-7b-beta", model_kwargs={"max_new_tokens": 512})
+
+    # llm = Ollama(model="llama2:latest")
     chain = RetrievalQA.from_chain_type(llm, retriever=retriever)
     return chain.run(query)
 
