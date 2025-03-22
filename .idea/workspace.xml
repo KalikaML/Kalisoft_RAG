@@ -20,16 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd271209-cf2b-4bde-9907-e2bfed1110c4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Kalisoft_RAG.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/SmartDashboard.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/aws.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rag.py" beforeDir="false" afterPath="$PROJECT_DIR$/rag.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +39,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TF_FMT" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../KalikaChatRAG" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -115,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1741399882732</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="po and proforma is updated">
+      <created>1741787803837</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1741787803838</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -134,17 +132,18 @@
     <MESSAGE value="Updated" />
     <MESSAGE value="updated with new flow" />
     <MESSAGE value="Kalika RAG bot updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="Kalika RAG bot updated" />
+    <MESSAGE value="po and proforma is updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="po and proforma is updated" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="421" y="91" key="FileChooserDialogImpl" timestamp="1741540678460">
+    <state x="421" y="91" key="FileChooserDialogImpl" timestamp="1742318810386">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="421" y="91" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1741540678460" />
-    <state x="233" y="56" key="Vcs.Push.Dialog.v2" timestamp="1741399884739">
+    <state x="421" y="91" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1742318810386" />
+    <state x="233" y="56" key="Vcs.Push.Dialog.v2" timestamp="1742316907201">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="233" y="56" key="Vcs.Push.Dialog.v2/0.0.1280.672@0.0.1280.672" timestamp="1741399884739" />
+    <state x="233" y="56" key="Vcs.Push.Dialog.v2/0.0.1280.672@0.0.1280.672" timestamp="1742316907201" />
     <state x="444" y="250" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1741398945111">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
